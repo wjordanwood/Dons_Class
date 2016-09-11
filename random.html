@@ -1,14 +1,32 @@
 <script>
 var i = 0;
+var stop = window.prompt("How many times would you like to roll the dice?(Enter a number like 10)");
 var count = 0;
 var between = 0;
+var least = 0;
+var most = 0;
+
+
+do{
+if(isNaN(stop))
+{
+	stop = window.prompt("Enter a Number");
+
+}
+}
+while(isNaN(stop))
+
+
+
+document.write("Snake eyes out of " + stop + "</br></br>");
+
 do{
 var num1 = Math. floor((Math.random() * 6) + 1);
 var num2 = Math.floor((Math.random() * 6) + 1);
 
 if(num1 == num2 && num1 == 1)
 {
-	document.write("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + between + "</br>");
+	document.write("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + between + " tries</br>");
 	document.write(i + ". Snake Eyes</br>");
 	count++;
 	between = 0;	
@@ -18,7 +36,18 @@ else
 	between++;
 }
 	i++;
+if(between<least)
+{
+least = between;
 }
-while(i<100000);
-document.write("</br>You got Snake eyes " + count + " out of " + i + " times");
+
+if(between>most)
+{
+most = between;
+}
+}
+
+while(i<stop);
+document.write("</br>You got Snake eyes " + count + " out of " + stop + " times</br>Longest time between succesful tries = " + most + "</br> Shortest time between tries = " + least);
+
 </script>
