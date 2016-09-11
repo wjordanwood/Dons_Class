@@ -1,0 +1,24 @@
+<script>
+var i = 0;
+var count = 0;
+var between = 0;
+do{
+var num1 = Math. floor((Math.random() * 6) + 1);
+var num2 = Math.floor((Math.random() * 6) + 1);
+
+if(num1 == num2 && num1 == 1)
+{
+	document.write("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + between + "</br>");
+	document.write(i + ". Snake Eyes</br>");
+	count++;
+	between = 0;	
+}
+else
+{
+	between++;
+}
+	i++;
+}
+while(i<100000);
+document.write("</br>You got Snake eyes " + count + " out of " + i + " times");
+</script>
