@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "UTF-8">
+<title>Shipping Calculator</title>
+</head>
+<body>
+
+
+<h2 id = "title">Shipping Calculator</h2>
+
+<div id = "input">
+	<p>
+		Length: <input type ="text"  id = "lengthText"  onchange = "shipCalculator()"><br/>
+		Width: <input type = "text" id = "widthText"  onchange = "shipCalculator()"><br/>
+		Height: <input type = "text" id = "heightText"  onchange = "shipCalculator()"><br/>
+	</p>
+</div>
+
+<div id = "radio">
+	<p>
+		<input type = "radio" name = "shipGroup" value = "1.15" onclick = "shipCalculator()">Ship By Air<br/>
+		<input type = "radio" name = "shipGroup" value = "1.4" onclick = "shipCalculator()">Ship By Ground<br/>
+		<input type = "radio" name = "shipGroup" value= "1.5" onclick = "method = 1.5", "shipCalculator()">Next Day Shipping<br/>
+	</p>
+</div>
+
+<div id = "output">
+	<p id = "return"></p>
+</div>
+
+
+</body>
+<script>
+
+
+function shipCalculator()
+{
+	//if (height == undefined) height = 1;
+	//if (length == undefined) length = 1;
+	//if (width == undefined) width = 1;
+	//if (method == undefined) method = 1;
+	var length = lengthText.value;
+	var width = widthText.value;
+	var height = heightText.value;
+	var method = shipGroup.value;
+	var result = length * width * height * method;
+	document.getElementById("return").innerHTML = result.toString();
+}
+
+</script>
+</html>
