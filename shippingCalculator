@@ -11,19 +11,21 @@
 
 <div id = "input">
 	<p>
-		Length: <input type ="text"  id = "lengthText"  onchange = "shipCalculator()"><br/>
-		Width: <input type = "text" id = "widthText"  onchange = "shipCalculator()"><br/>
-		Height: <input type = "text" id = "heightText"  onchange = "shipCalculator()"><br/>
+		Length: <input type ="text"  id = "lengthText" onchange = "shipCalculator(lengthText.value, widthText.value, heightText.value, document.getElementById('ship')['shipGroup'].value)"><br/>
+		Width: <input type = "text" id = "widthText" onchange = "shipCalculator(lengthText.value, widthText.value, heightText.value, document.getElementById('ship')['shipGroup'].value)"><br/>
+		Height: <input type = "text" id = "heightText" onchange = "shipCalculator(lengthText.value, widthText.value, heightText.value, document.getElementById('ship')['shipGroup'].value)"><br/>
 	</p>
 </div>
-
+<form id = "ship">
 <div id = "radio">
 	<p>
-		<input type = "radio" name = "shipGroup" value = "1.15" onclick = "shipCalculator()">Ship By Air<br/>
-		<input type = "radio" name = "shipGroup" value = "1.4" onclick = "shipCalculator()">Ship By Ground<br/>
-		<input type = "radio" name = "shipGroup" value= "1.5" onclick = "method = 1.5", "shipCalculator()">Next Day Shipping<br/>
+		<input type = "radio" name = "shipGroup" id = "air" value = "1.15" onclick = "shipCalculator(lengthText.value, widthText.value, heightText.value, document.getElementById('ship')['shipGroup'].value)" >Ship By Air<br/>
+		<input type = "radio" name = "shipGroup" id = "ground" value = "1.4" onclick = "shipCalculator(lengthText.value, widthText.value, heightText.value, document.getElementById('ship')['shipGroup'].value)">Ship By Ground<br/>
+		<input type = "radio" name = "shipGroup" id = "2day" value= "1.5" onclick = "shipCalculator(lengthText.value, widthText.value, heightText.value, document.getElementById('ship')['shipGroup'].value)">Next Day Shipping<br/>
 	</p>
 </div>
+</form>
+		
 
 <div id = "output">
 	<p id = "return"></p>
@@ -33,19 +35,14 @@
 </body>
 <script>
 
-
-function shipCalculator()
+function shipCalculator(length, width, height, method)
 {
-	//if (height == undefined) height = 1;
-	//if (length == undefined) length = 1;
-	//if (width == undefined) width = 1;
-	//if (method == undefined) method = 1;
-	var length = lengthText.value;
-	var width = widthText.value;
-	var height = heightText.value;
-	var method = shipGroup.value;
-	var result = length * width * height * method;
-	document.getElementById("return").innerHTML = result.toString();
+	if (height == null) {height = 1;}
+	if (length == NaN) {alert("Enter a length");}
+	if (width == NaN) {alert("Enter a width");}
+	if (method == NaN) {alert("Please Select a shipping method");}
+		var result = length * width * height * method;
+	document.getElementById("return").innerHTML = "Your package will cost $" + result.toFixed(2).toString() + " to ship.";
 }
 
 </script>
