@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#container{
+font: helvetica sans serif;
+font-size:18px;
+background-color: grey;
+margin : 2%;
+width: 96%;
+height: 40%;
+border: 3px solid DarkRed;
+border-radius: 10px;
+}
+
+#header{
+
+border-bottom:2px solid DarkRed;
+padding-left: 3%;
+}
+#dimensions{
+padding-left:3%;
+}
+
+input[type = "text"]{
+border:none;
+border-bottom:1px solid DarkRed;
+background-color: SlateGrey;
+width:98%;
+border-radius:4px;
+box-sizing: border-box;
+}
+#ship input[type="radio"] {
+margin-left:3%;
+
+}
+
+
+
+
+#output{
+height:45px;
+border-top:2px solid DarkRed;
+padding-left: 3%;
+}
+</style>
+<link href="mystyles.css" rel="stylesheet">
+<meta charset = "UTF-8">
+<title>Shipping Calculator</title>
+</head>
+<body>
+
+<div id = "container">
+<h2 id = "header">Shipping Calculator</h2>
+
+<div id = "input">
+	<p id = "dimensions">
+		Length: <input type ="text"  id = "lengthText" onchange = "getValues()"><br/>
+		Width: <input type = "text" id = "widthText" onchange = "getValues()"><br/>
+		Height: <input type = "text" id = "heightText" onchange = "getValues()"><br/>
+	</p>
+</div>
+<form id = "ship">
+<div id = "radio">
+	<p>
+		<input type = "radio" name = "shipGroup" id = "air" value = "1.15" onclick = "getValues()" >Ship By Air<br/>
+		<input type = "radio" name = "shipGroup" id = "ground" value = "1.4" onclick = "getValues()">Ship By Ground<br/>
+		<input type = "radio" name = "shipGroup" id = "2day" value= "1.5" onclick = "getValues()">Next Day Shipping<br/>
+	</p>
+</div>
+</form>
+
+
+<div id = "output">
+	<p id = "return">Cost to Ship: $</p>
+</div>
+</div>
+
+</body>
+<script>
+function getValues()
+{
+	var height = heightText.value;
+	var width = widthText.value;
+	var length = lengthText.value;
+	var method = document.getElementById('ship')['shipGroup'].value;
+
+	if (isNull(length) ||  isNull(width) || isNull(method))
+	{
+		 document.getElementById("output").innerHTML = "Please Fill out Form Completely";
+	
+	}
+
+	else if (isNull(height))
+	{
+		shipCalculator(length, width, 1, method);
+		
+	}
+
+	else
+	{
+		shipCalculator(length, width, height, method);
+			
+	}
+	
+	 
+	
+}
+
+function shipCalculator(length, width, height, method)
+{
+
+		var result = length * width * height * method;
+	document.getElementById("return").innerHTML = "Cost to Ship: $"+ result.toFixed(2).toString();
+}
+
+</script>
+</html>
