@@ -44,7 +44,6 @@ border-top:2px solid DarkRed;
 padding-left: 3%;
 }
 </style>
-<link href="mystyles.css" rel="stylesheet">
 <meta charset = "UTF-8">
 <title>Shipping Calculator</title>
 </head>
